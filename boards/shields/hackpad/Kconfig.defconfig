@@ -1,0 +1,7 @@
+if SHIELD_HACKPAD
+
+# Name must be less than 16 characters long!
+config ZMK_HACKPAD
+    default "Hackpad"
+
+endif

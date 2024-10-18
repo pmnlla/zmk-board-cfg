@@ -1,0 +1,102 @@
+#include <dt-bindings/led/led.h>
+#include <dt-bindings/zmk/matrix_transform.h>
+
+// i have zero clue if i hold any kind of copyright over this code. don't ask, just use it.
+
+/ {
+    //
+    // key configuration
+    // -----------------
+
+    kscan0: kscan0 {
+        compatible = "zmk,kscan-gpio-matrix";
+        diode-direction = "col2row";
+        wakeup-source;
+
+        col-gpios
+            = <&xiao_d 6 GPIO_ACTIVE_HIGH>
+            , <&xiao_d 4 GPIO_ACTIVE_HIGH>
+            , <&xiao_d 5 GPIO_ACTIVE_HIGH>
+            ;
+
+        row-gpios
+            = <&xiao_d 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&xiao_d 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&xiao_d 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&xiao_d 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            ;
+    };
+
+    default_transform: keymap_transform0 {
+        compatible = "zmk,matrix-transform";
+        columns = <3>; // Length of the "col-gpios" array
+        rows = <4>; // Length of the "row-gpios" array
+        map = <
+        //           Key 1 | Key 2
+                    RC(3,1) RC(1,1)
+        //   Key 3 | Key 4 | Key 5 | Key 6
+            RC(3,2) RC(0,1) RC(2,1) RC(1,2)
+        //   Key 7 | Key 8 | Key 9 | Key 10
+            RC(3,0) RC(0,2) RC(2,2) RC(1,0)
+        //          Key 11 | Key 12
+                    RC(0,0) RC(2,0)
+        >;
+    };
+
+    keypad_position_map {
+        compatible = "zmk,physical-layout-position-map";
+        complete;
+
+        macropad_map: macropad {
+            physical-layout = <&macropad_layout>;
+            positions
+                = <    0  1   >
+                , < 2  3  4  5>
+                , < 6  7  8  9>
+                , <   10  11   >;
+        };
+
+    };
+
+    //
+    // underglow configuration
+    // -----------------------
+
+
+    &xiao_spi 10 {
+
+        led_strip: ws2812@0 {
+            compatible = "worldsemi,ws2812-spi";
+
+            /* SPI */
+            reg = <0>;
+            spi-max-frequency = <5250000>;
+
+            /* WS2812 */
+            chain-length = <10>; /* number of LEDs */
+            spi-one-frame = <0x70>; /* make sure to configure this properly for your SOC */
+            spi-zero-frame = <0x40>; /* make sure to configure this properly for your SOC */
+            color-mapping = <LED_COLOR_ID_GREEN
+                                LED_COLOR_ID_RED
+                                LED_COLOR_ID_BLUE>;
+        };
+    };
+
+    //
+    // defaults configuration
+    // ----------------------
+
+    default_layout: default_layout {
+        compatible = "zmk,physical-layout";
+        display-name = "Default Layout";
+        transform = <&default_transform>;
+        kscan = <&kscan0>;
+    };
+
+    chosen {
+        // Layout configuration
+        zmk,physical-layout = &default_layout;
+        // Other chosen items
+        zmk,underglow = &led_strip;
+    };
+}
