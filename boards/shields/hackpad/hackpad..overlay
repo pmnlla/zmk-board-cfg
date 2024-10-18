@@ -63,7 +63,7 @@
     // -----------------------
 
 
-    &xiao_spi 10 {
+    &spi0 {
 
         led_strip: ws2812@0 {
             compatible = "worldsemi,ws2812-spi";
@@ -73,7 +73,7 @@
             spi-max-frequency = <5250000>;
 
             /* WS2812 */
-            chain-length = <10>; /* number of LEDs */
+            chain-length = <20>; /* number of LEDs */
             spi-one-frame = <0x70>; /* make sure to configure this properly for your SOC */
             spi-zero-frame = <0x40>; /* make sure to configure this properly for your SOC */
             color-mapping = <LED_COLOR_ID_GREEN
