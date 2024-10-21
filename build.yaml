@@ -17,7 +17,7 @@
 #     artifact-name: corne_left_with_logging
 #
 ---
-board: [ "seeeduino_xiao_rp2040 ]
+board: ["seeeduino_xiao_rp2040"]
 shield: [ "hackpad"] 
 include:
    - board: seeeduino_xiao_rp2040
