@@ -32,14 +32,14 @@
         columns = <3>; // Length of the "col-gpios" array
         rows = <4>; // Length of the "row-gpios" array
         map = <
-        //           Key 1 | Key 2
-                    RC(3,1) RC(1,1)
-        //   Key 3 | Key 4 | Key 5 | Key 6
-            RC(3,2) RC(0,1) RC(2,1) RC(1,2)
-        //   Key 7 | Key 8 | Key 9 | Key 10
-            RC(3,0) RC(0,2) RC(2,2) RC(1,0)
-        //          Key 11 | Key 12
-                    RC(0,0) RC(2,0)
+        //           Key 1
+                    RC(3,0) 
+        //   Key 3 | Key 4 | Key 5
+            RC(3,0) RC(0,0) RC(1,1)
+        //   Key 7 | Key 8 | Key 9 
+            RC(0,0) RC(1,1) RC(2,1)
+        //   Key 7 | Key 8 | Key 9 
+            RC(3,2) RC(2,1) RC(2,2)
         >;
     };
 
@@ -50,10 +50,10 @@
         macropad_map: macropad {
             physical-layout = <&macropad_layout>;
             positions
-                = <    0  1   >
-                , < 2  3  4  5>
-                , < 6  7  8  9>
-                , <   10  11   >;
+                = <    0    >
+                , < 1  2  3 >
+                , < 4  5  6 >
+                , < 7  8  9 >;
         };
 
     };
