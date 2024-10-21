@@ -17,3 +17,10 @@
 #     artifact-name: corne_left_with_logging
 #
 ---
+board: ["seeeduino_xiao_rp2040"]
+shield: [ "hackpad"] 
+include:
+   - board: seeeduino_xiao_rp2040
+     shield: hackpad
+     cmake-args: -DCONFIG_ZMK_USB_LOGGING=y
+     artifact-name: corne_left_with_logging
