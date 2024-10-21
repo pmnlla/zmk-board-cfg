@@ -17,3 +17,11 @@
 #     artifact-name: corne_left_with_logging
 #
 ---
+board: [ "ambryv1" ]
+shield: [ "hackpad"] 
+include:
+   - board: ambryv1
+     shield: hackpad
+     cmake-args: -DCONFIG_ZMK_USB_LOGGING=y
+     artifact-name: corne_left_with_logging
+
