@@ -1,9 +1,0 @@
-file_format: "1"
-id: hackpad
-name: Hackpad
-type: shield
-url: https://github.com/pmnlla/hackpad
-requires: [seeduino_rp2040_xiao]
-exposes: []
-features:
-  - keys
