@@ -1,0 +1,8 @@
+file_format: "1"
+id: ambryv1
+name: AmbryV1
+type: board
+url: https://github.com/pmnlla/hackpad
+requires: [hackpad]
+features:
+  - keys
