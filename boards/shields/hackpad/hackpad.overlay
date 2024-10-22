@@ -3,11 +3,7 @@
 
 // i have zero clue if i hold any kind of copyright over this code. don't ask, just use it.
 
-{
-    //
-    // key configuration
-    // -----------------
-
+/{
     kscan0: kscan0 {
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "col2row";
